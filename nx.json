@@ -29,6 +29,9 @@
     "lor-e2e": {
       "tags": [],
       "implicitDependencies": ["lor"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
