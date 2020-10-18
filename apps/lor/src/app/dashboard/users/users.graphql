@@ -1,0 +1,25 @@
+fragment UserFrag on User {
+  id
+  email
+  first_name
+  last_name
+  full_name
+}
+
+query GetUsers {
+  getUsers {
+    ...UserFrag
+  }
+}
+
+mutation CreateUser($form: CreateUserForm!) {
+  createUser(form: $form) {
+    ...UserFrag
+  }
+}
+
+mutation UpdateUser($id: Int!, $form: UpdateUserForm!) {
+  updateUser(form: $form, id: $id) {
+    ...UserFrag
+  }
+}

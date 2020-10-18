@@ -17,12 +17,19 @@ export const typeDefs = gql`
     last_name: String!
   }
 
+  input UpdateUserForm {
+    email: String
+    first_name: String
+    last_name: String
+  }
+
   extend type Query {
     getUsers: [User!]!
   }
 
   extend type Mutation {
     createUser(form: CreateUserForm!): User!
+    updateUser(id: Int!, form: UpdateUserForm!): User!
   }
 `;
 
@@ -37,6 +44,15 @@ export const resolvers: Resolvers<ContextGraphql> = {
     createUser: async (_, { form }, { prisma }) => {
       const user = await prisma.user.create({
         data: form,
+      });
+      return user;
+    },
+    updateUser: async (_, { form, id }, { prisma }) => {
+      const user = await prisma.user.update({
+        data: form,
+        where: {
+          id: id,
+        },
       });
       return user;
     },

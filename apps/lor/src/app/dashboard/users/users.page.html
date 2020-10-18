@@ -1,1 +1,25 @@
-<p>users works!</p>
+<h1>users works!</h1>
+
+<pre>{{ users$ | async | json }}</pre>
+
+<form [formGroup]="form" (submit)="createUser()">
+  <div>
+    <label for="email"> Email: </label>
+    <input type="email" name="email" formControlName="email" />
+  </div>
+  <div>
+    <label for="first_name"> FirstName: </label>
+    <input type="first_name" name="first_name" formControlName="first_name" />
+  </div>
+  <div>
+    <label for="last_name"> LastName: </label>
+    <input type="last_name" name="last_name" formControlName="last_name" />
+  </div>
+  <button mat-raised-button type="submit" [disabled]="form.invalid">
+    Create User
+  </button>
+</form>
+
+<button mat-raised-button (click)="updateUser()">
+  Create User
+</button>

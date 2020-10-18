@@ -45,11 +45,18 @@ export type Mutation = {
   __typename?: 'Mutation';
   _?: Maybe<Scalars['Boolean']>;
   createUser: User;
+  updateUser: User;
 };
 
 
 export type MutationCreateUserArgs = {
   form: CreateUserForm;
+};
+
+
+export type MutationUpdateUserArgs = {
+  id: Scalars['Int'];
+  form: UpdateUserForm;
 };
 
 export type User = {
@@ -65,6 +72,12 @@ export type CreateUserForm = {
   email: Scalars['String'];
   first_name: Scalars['String'];
   last_name: Scalars['String'];
+};
+
+export type UpdateUserForm = {
+  email?: Maybe<Scalars['String']>;
+  first_name?: Maybe<Scalars['String']>;
+  last_name?: Maybe<Scalars['String']>;
 };
 
 
@@ -152,9 +165,10 @@ export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Float: ResolverTypeWrapper<Scalars['Float']>;
   Mutation: ResolverTypeWrapper<{}>;
-  User: ResolverTypeWrapper<UserModel>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  User: ResolverTypeWrapper<UserModel>;
   CreateUserForm: CreateUserForm;
+  UpdateUserForm: UpdateUserForm;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -165,9 +179,10 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
   Float: Scalars['Float'];
   Mutation: {};
-  User: UserModel;
   Int: Scalars['Int'];
+  User: UserModel;
   CreateUserForm: CreateUserForm;
+  UpdateUserForm: UpdateUserForm;
 };
 
 export type GreetingResolvers<ContextType = any, ParentType extends ResolversParentTypes['Greeting'] = ResolversParentTypes['Greeting']> = {
@@ -186,6 +201,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   _?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   createUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationCreateUserArgs, 'form'>>;
+  updateUser?: Resolver<ResolversTypes['User'], ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'id' | 'form'>>;
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UsersPage } from './users.page';
 
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
   {
@@ -13,6 +15,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [UsersPage],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+  ],
 })
 export class UsersModule {}
